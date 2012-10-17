@@ -1,0 +1,43 @@
+\documentclass[11pt,letterpaper,oneside,openright]{book}
+
+\usepackage[spanish]{babel}
+\usepackage[utf8]{inputenc} 
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{textcomp}
+\usepackage[pdftex]{color,graphicx,hyperref}
+\usepackage{multirow}
+% \usepackage[bookmarks]{}
+% \usepackage[bookmarks,colorlinks]{hyperref}
+
+
+\graphicspath{{images/}}
+% \usepackage{hyperref}
+\hypersetup{colorlinks,%
+            citecolor=black,%
+            filecolor=black,%
+            linkcolor=black,%
+            urlcolor=black}
+
+% \usepackage[charter]{mathdesign}
+
+\title{Geo-localizaci\'on con Ruby on Rails}
+\author{Edmundo Figueroa Herbas}
+\date{\today \ }
+
+\begin{document}
+% \include{title-page}
+\frontmatter
+  \maketitle
+  % \tableofcontents
+
+\mainmatter
+  \include{ror_patrones}
+  % \include{cap2}
+
+\backmatter
+  \include{bliblio}
+  % \listoffigures
+  % \listoftables
+% \newpage
+\end{document}

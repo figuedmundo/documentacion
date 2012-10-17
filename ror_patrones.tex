@@ -1,0 +1,106 @@
+\chapter{Ruby on Rails y patrones Web 2.0} % (fold)
+\label{cha:ruby_on_rails_y_patrones_web_2_0}
+
+  \section{Porque usar Ruby on Rails para desarrollar una aplicación web ?} % (fold)
+  \label{sec:porque_usar_ruby_on_rails_para_desarrollar_una_aplicacion_web}
+
+    La gran propaganda de Ruby on Rails (RoR) o más sencillamente Rails
+    se basa en el rápido desarrollo de aplicaciones web conocido como agile development.
+
+    Ruby on Rails maneja las filosofías DRY\footnote{Don’t Repeat Yourself} y convención sobre configuración. 
+
+    \begin{description}
+      \item[No te repitas(DRY)] según el creador de RoR, David Heinemeier Hansson, 
+      significa que cada pieza de conocimiento en un sistema 
+      debe ser declarado en un solo lugar.\cite{awdr4e} 
+      Esto se logra gracias al patrón MVC\footnote{Model, View, Controller} 
+      y el lenguaje multiparadigma Ruby sobre los cuales está construido Ruby on Rails.\\
+      
+      \item[Convención sobre configuración] significa que Rails tiene parámetros por 
+      defecto para casi todos los aspectos que mantiene unida una aplicación, 
+      siguiendo  las convenciones de Rails se llega a simplificar el código escrito en una aplicación.\\
+    \end{description}
+      % paragraph dry (end)
+
+
+    David Heinemeier cita en su libro \cite{awdr4e}, que \emph{“Rails es Ágil porque 
+    simplemente la agilidad es parte de su construcción”}.\\
+
+    Los principios del manifiesto por el desarrollo ágil de software:
+    \begin{itemize}
+      \item \textbf{Individuos e interacciones} sobre procesos y herramientas
+      \item \textbf{Software funcionando} sobre documentación extensiva
+      \item \textbf{Colaboración con el cliente} sobre negociación contractual
+      \item \textbf{Respuesta ante el cambio} sobre seguir un plan
+    \end{itemize}
+    
+    Rails se enfoca bastante en conseguir un prototipo funcional en muy poco tiempo 
+    y sobre ese prototipo seguir incrementalmente hasta conseguir una aplicacion 
+    de calidad en poco tiempo.\\
+
+    Los más grandes obstáculos que se enfrenta una aplicación en el tiempo es el 
+    mantenimiento y escalabilidad, actualmente se estima que existen 230,000 websites\cite{web2} 
+    desarrolladas sobre RoR\footnote{Ruby on Rails, tambien se lo puede nombrar \emph{Rails}, \emph{RoR}}, 
+    entre ellas se puede nombrar a GitHub, Hulu, Yellow Pages. Son sitios con miles de visitas
+    con una alta carga del servidor y son un claro ejemplo de que Rails puede manejar sitios de alto perfil.\\
+
+    Los detractores de Rails sostienen que escalar una aplicación construida 
+    sobre RoR es muy difícil pero los defensores argumentan que lo que se 
+    tiene que escalar es el código de la aplicación no el framework.\\
+
+    Twitter nació sobre Ruby on  Rails  y no fue hasta que era un servicio usado 
+    a nivel mundial y manejaba millones de request por día que empezaron a surgir 
+    problemas debido a que Ruby no estaba optimizado para un trabajo muy pesado, 
+    según palabras de Alex Payne, Twitter developer, “Ruby es lento”\cite{web3}. 
+    Actualmente Twitter migró su backend a Scala, framework basado en Java(que esta mas optimizado que Ruby),
+    pero para su front-end no cambian a Rails.\cite{web4}\\
+    
+    Se puede agregar que Rails es una muy buena opción a la hora de empezar 
+    cualquier proyecto web, ya que implementa las herramientas necesarias 
+    para un desarrollo ágil, sólido y de calidad respaldado por un modelo 
+    de desarrollo basado en pruebas(TDD), las filosofías DRY y convención sobre configuración.
+    y cundo la aplicaci\'on haya crecido y empiecen a aparecer muchos problemas es 
+    decisión de los programadores el ver si mantener el código actual y parchearlo o 
+    cambiar de tecnología para mejorar el rendimiento y la experiencia del usuario\\
+  % section porque_usar_ruby_on_rails_para_desarrollar_una_aplicaci_n_web_ (end)
+
+  \section{Patrones de diseño de la Web2.0} % (fold)
+  \label{sec:patrones_web20}
+    Que es la Web2.0 ?,  primeramente  se debe explicar que este término fue acuñado 
+    por 1999 para describir paginas web que usaban tecnologias mas alla de las 
+    simples estaticas paginas web.\\
+    No fue hasta que en  el 2004 en la conferencian sobre la Web2.0 que popularizo este termino, 
+    y asi mismo como la Web que evoluciona, la definicion se actualiza con el tiempo, 
+    pero Tim O’Reilly trato de definirla en su articulo “What is Web 2.0”\cite{web5}, 
+    del que se puede extraer la siguiente definici\'on :
+    \begin{quote}
+      “Web 2.0 is the business revolution in the computer industry caused by the move to the
+       Internet as a platform, and an attempt to understand the rules for success on that new
+       platform. Chief among those rules is this: build applications that harness network
+       effects to get better the more people use them.”
+       \begin{flushright}
+       --Tim O’Reilly \cite{web9}
+       \end{flushright}
+    \end{quote}
+    En resumen se puede definir que una aplicación web2.0 es aquella que mejora y crece con la 
+    participación activa de sus usuarios.
+
+    \begin{quote}
+      “Software que mejora mientras más gente la usa” \cite{web5}
+    \end{quote}
+
+    Un patrón de diseño es una solución general, reusable  y flexible 
+    que describe cómo resolver algún problema general en el desarrollo 
+    de software, un patrón puede ser usado y modificado segun el problema 
+    al cual se esta aplicando.\\
+    Se pueden observar los siguientes patrones de dise\~no en la aplicación:
+    \begin{itemize}
+      \item REST
+      \item MVC
+      \item Mashup
+    \end{itemize}
+    
+  % section patrones_web20 (end)
+
+
+% chapter ruby_on_rails_y_patrones_web_2_0 (end)

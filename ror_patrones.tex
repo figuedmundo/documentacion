@@ -17,13 +17,13 @@
       
       \item[Convención sobre configuración] significa que Rails tiene parámetros por 
       defecto para casi todos los aspectos que mantiene unida una aplicación, ya que se logro
-      observar que la gran mayoria de aplicaciones web compartian la misma configuracion inicial,
-      siguiendo  las convenciones de Rails se llega a simplificar el código escrito en una aplicación.
+      observar que la gran mayoria de aplicaciones web compartian la misma configuraci\'on inicial,
+      siguiendo  las convenciones de Rails se llega a simplificar el código escrito en una aplicación, tambi\'en se agiliza el desarrollo ya que no es necesario tomar decisiones sobre características basicas que se necesita implementar.
     \end{description}
 
 
     David Heinemeier cita en su libro \cite{awdr4e}, que \emph{“Rails es Ágil porque 
-    simplemente la agilidad es parte de su construcción”}.
+    simplemente la agilidad es parte de su construcción”}.\\
 
     Se puede analizar esta afirmaci\'on teniendo en cuenta los principios del
      \textbf{manifiesto por el desarrollo ágil de software}\footnote{http://agilemanifesto.org/iso/es/}:
@@ -41,7 +41,7 @@
 
     Los más grandes obstáculos que se enfrenta una aplicación en el tiempo es el 
     mantenimiento y escalabilidad, actualmente se estima que existen 230,000 websites\cite{web2} 
-    desarrolladas sobre RoR %\footnote{Ruby on Rails, tambien se lo puede nombrar \emph{Rails}, \emph{RoR}}, 
+    desarrolladas sobre RoR %\footnote{Ruby on Rails, tambi\'en se lo puede nombrar \emph{Rails}, \emph{RoR}}, 
     entre ellas se puede nombrar a GitHub, Hulu, Yellow Pages. Son sitios con miles de visitas diarias
     con una alta carga del servidor y son un claro ejemplo de que Rails puede manejar sitios de alto perfil.\\
 
@@ -69,7 +69,7 @@
   \label{sec:patrones_web20}
     Que es la Web2.0 ?,  primeramente  se debe explicar que este término fue acuñado 
     por 1999 para describir paginas web que usaban tecnologias mas alla de las 
-    simples estaticas paginas web.
+    simples estaticas paginas web.\\
     
     No fue hasta que en  el 2004 en la conferencian sobre la Web2.0 que se popularizo este termino, 
     y asi mismo como la Web que evoluciona, la definicion se actualiza con el tiempo, 
@@ -77,7 +77,7 @@
     articulo que se puede considerar como la guia de referencia para cualquier persona que quiera
     entender que es la Web2.0 y sus origenes,
     en un articulo posterior ``\emph{Web 2.0 Compact Definition: Trying Again}''\cite{web9}
-    del que se puede extraer la siguiente definici\'on:
+    del que se puede extraer la siguiente definici\'on:\\
     \begin{quote}
       “Web 2.0 is the business revolution in the computer industry caused by the move to the
        Internet as a platform, and an attempt to understand the rules for success on that new
@@ -94,16 +94,22 @@
       “Software que mejora mientras más gente la usa” \cite{web5}
     \end{quote}
 
+    \subsection{Patrones de dise\~no} % (fold)
+    \label{sub:patrones_de_diseno}
+    
+
     Un patrón de diseño es una solución general, reusable  y flexible 
     que describe cómo resolver algún problema general en el desarrollo 
     de software, un patrón puede ser usado y modificado segun el problema 
     al cual se esta aplicando.\\
+
     Se pueden observar los siguientes patrones de dise\~no en la aplicación:
     \begin{itemize}
       \item \textbf{REST}
       \item \textbf{MVC}
       \item \textbf{Mashup}
     \end{itemize}
+    % subsection patrones_de_diseno (end)
 
     \subsection{REpresentational State Transfer (REST)} % (fold)
     \label{sub:rest}
@@ -111,13 +117,23 @@
 
       REST es un estilo arquitectónico que especifica cómo los recursos van a ser definidos y direccionados, especifica la importancia del protocolo \emph{cliente-servidor-sin estado}, ya que cada request tiene toda la información necesaria para entenderla.\\
 
-      En el contexto de Rails, REST significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leidos, actualizados y borrados, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales  y a los cuatro operaciones fundamentales POST, GET, PUT, DELETE definidos en el  protocolo HTTP.\\
+      En el contexto de Rails, REST significa que los componentes del sistema por ejemplo los usuarios son modelados como recursos que pueden ser creados, leídos, actualizados y borrados, estas acciones corresponden a las operaciones CRUD (Create, Read, Update, Delete) de las base de datos relacionales  y a los cuatro operaciones fundamentales POST, GET, PUT, DELETE definidos en el  protocolo HTTP.\\
 
       En Rails el estilo de desarrollo RESTful\footnote{se denomina RESTful a los sistemas que siguen los principios REST} ayuda a determinar acerca de qué controlador y cuál será la acción que se ejecutará, solamente procesando el request HTTP hecho al servidor.\\
 
-      \textbf{GET} es la operación HTTP más común, es usado para leer datos en este caso paginas, se puede leer como ``get a page'', \textbf{POST} es la operación que se usa cuando se ejecuta un formulario, en la convención de Rails \textbf{POST} se usa para crear objetos o recursos, PUT se usa para actualizar objetos ,DELETE se usa para borrar objetos.  Los browsers actuales no son capaces de manejar las operaciones \textbf{PUT} y \textbf{DELETE} de forma nativa, por lo que Rails usa un pequeño truco que consiste en declarar el método que se esta enviando en un \emph{hidden field} en el formulario HTML.\\
+      \textbf{GET} es la operación HTTP más común, es usado para leer 
+      datos en este caso paginas, se puede leer como ``get a page'', 
+      \textbf{POST} es la operación que se usa cuando se ejecuta un formulario, 
+      en la convención de Rails \textbf{POST} se usa para crear 
+      objetos o recursos, \textbf{PUT} se usa para actualizar objetos, 
+      \textbf{DELETE} es usado para borrar objetos.  Los browsers actuales no son capaces 
+      de manejar las operaciones \textbf{PUT} y \textbf{DELETE} de forma nativa, 
+      por lo que Rails usa un pequeño truco que consiste en declarar el método 
+      que se esta enviando en un \emph{hidden field} en el formulario HTML.\\
 
-      Para lograr todo este comportamiento  es necesario declarar, en el archivo que controla las rutas dentro de la aplicación, \textbf{routes.rb}, que el recurso usuarios es \emph{restful}, tal como se muestra en la figura \ref{fig:rest}\\
+      Para lograr todo este comportamiento  es necesario declarar, en el archivo 
+      que controla las rutas dentro de la aplicación, \textbf{routes.rb}, que el 
+      recurso \textbf{user} es \emph{restful}, tal como se muestra en la figura \ref{fig:rest}\\
 
       \begin{figure}[!hbp]
         \begin{center}
@@ -127,7 +143,7 @@
         \label{fig:rest}
       \end{figure}
 
-      La imagen \ref{fig:rest} muestra como se declara a \textbf{users} con 
+      La figura \ref{fig:rest} muestra como se declara a \textbf{users} con 
       todas las acciones restful los cuales se listan en el cuadro \ref{tab:rest},  
       Rails también permite declarar solamente algunas acciones restful,
       como se ve el recurso \textbf{sessions} solamente tiene las acciones de \textbf{new}, \textbf{create} y \textbf{destroy}.\\
@@ -136,62 +152,277 @@
       \begin{table}[!hbp]
         \label{tab:rest}
         \begin{center}
-          \begin{tabular}{ lll }
-            \multicolumn{1}{c}{\textbf{HTTP request}} & \multicolumn{1}{c}{\textbf{URL}}  & \multicolumn{1}{c}{\textbf{ACTION}} \\
+          \begin{tabular}{ l l l  p{5cm} }
             \toprule
-            GET     &   /users         &   index \\ %\hline
-            GET     &   /users/1       &   show \\
-            GET     &   /users/new     &   new \\
-            POST    &   /users         &   create \\
-            GET     &   /users/1/edit  &   edit \\
-            PUT     &   /users/1       &   update \\
-            DELETE  &   /users/1       &   destroy \\
+            \multicolumn{1}{c}{\textbf{HTTP}} & 
+            \multicolumn{1}{c}{\textbf{URL}}  & 
+            % \multicolumn{1}{c}{\textbf{C}}  & 
+            \multicolumn{1}{c}{\textbf{ACCI\'ON}} &
+            \multicolumn{1}{c}{\textbf{USADO PARA}}  \\
+            \multicolumn{1}{c}{\textbf{request}} & & & \\
+
+            \midrule
+            GET     &   /users         &   index    & mostrar todos los usuarios\\ %\hline
+            GET     &   /users/new     &   new      & genera un formulario HTML para crear un nuevo usuario \\
+            POST    &   /users         &   create   & crea un nuevo usuario\\
+            GET     &   /users/1       &   show     & muestra un usuario especifico\\
+            GET     &   /users/1/edit  &   edit     & genera un formulario HTML para editar un usuario\\
+            PUT     &   /users/1       &   update   & actualiza los datos de un usuario especifico\\
+            DELETE  &   /users/1       &   destroy  & destruye un usuario\\
             \bottomrule
           \end{tabular}
           \caption[recursos REST]{las posibles rutas que se generan}
         \end{center}
       \end{table}
 
-      Por ejemplo, si generamos una petición GET hacia la direccion  \emph{/usuarios/1} el servidor interpreta la dirección y responde mostrando la información del usuario “1” ejecutando la acción \textbf{show} del controlador usuarios y en cambio si se genera una petición PUT a la misma direccion \emph{/usuarios/1} el servidor procesa la información y ejecuta la acción \textbf{update} del controlador usuarios actualizando la información del usuario “1”. Estas acciones no son más que métodos dentro del \emph{user\_controller.rb} el cual es parte del controlador de la arquitectura MVC.\\
+      Tal como se ve en el cuadro \ref{tab:rest}, Rails maneja los request HTTP de acuerdo con
+      el tipo de llamada que se realice, este trabajo lo realiza el \textbf{router},    
+      que reconoce las URLs y los despacha a una \textbf{acci\'on} del controlador,
+      todo este proceso ya esta implementado en el nucleo de Rails por lo tanto  es autom\'atico y el programador
+      no necesita mas configuraci\'on que la mostrada en la figura \ref{fig:rest}, 
+      obedeciendo al principio de \emph{Convención sobre configuración}\\
+ 
+      % % no son más que métodos dentro del \emph{user\_controller.rb} 
+      % el cual 
+      % es parte del controlador de la arquitectura MVC.\\
+
+      % The Rails router recognizes URLs and dispatches them to a controller’s action. It can also generate paths and URLs, avoiding the need to hardcode strings in your views.
+
+      Por ejemplo, si se genera una petición GET hacia la direcci\'on  
+      \mbox{\emph{/usuarios/1}}  el servidor interpreta la dirección y responde 
+      mostrando la información del usuario “1” ejecutando la acción 
+      \textbf{show} del controlador usuarios y en cambio si se genera 
+      una petición PUT a la misma direcci\'on \emph{/usuarios/1} el router 
+      procesa la información y ejecuta la acción \textbf{update} del controlador 
+      \textbf{usuarios} actualizando la información del usuario “1”. \\
 
       Esta convención de Rails ayuda a entender de mejor manera el flujo que tiene un recurso, 
-      las URL son legibles y únicos para cada recurso. La implementación de los recursos se hace mas limpia y ordenada situaciones que son claves para el mantenimiento y la extensibilidad del sistema.
+      las URL son legibles y únicos para cada recurso. La implementación 
+      de los recursos se hace de forma mas limpia y ordenada, situaciones que son 
+      claves para el mantenimiento y la extensibilidad del sistema.
+
+
     % subsection rest (end)
 
     \subsection{MVC} % (fold)
     \label{sub:mvc}
-      MVC (Modelo Vista  Controlador) es un patrón arquitectónico que separa los datos de la aplicación en la interfaz del usuario y  la lógica del negocio en tres partes cada uno especializado para su tarea, la vista maneja lo que es la interfaz del usuario puede ser gráficamente o solo texto, el controlador interpreta las entradas del teclado, mouse, o los cambios de la vista de la mejor forma y finalmente el modelo maneja el comportamiento de los datos de la aplicación.\cite{web7}\\
+      MVC (Modelo Vista  Controlador) es un patrón arquitectónico que separa 
+      los datos de la aplicación en la interfaz del usuario y  la lógica del 
+      negocio, en tres partes cada uno especializado para su tarea, la vista 
+      maneja lo que es la interfaz del usuario, puede ser gráficamente o solo texto, 
+      el controlador interpreta las entradas del teclado, mouse, o los cambios 
+      de la vista de la mejor forma posible y finalmente el modelo maneja el comportamiento 
+      de los datos de la aplicación.\cite{web7}
+      Concepto que se desarrolló en 1979 por Trygve Reenskaug el cual da una 
+      solución al problema de separar la lógica del negocio de la lógica de la presentación.\\ 
+      % al final cada acción o concepto se desarrolla en un lugar determinado.\\
+      % los objetivos/resultados/conclucion/facilidades
+     
+      Rails esta construido sobre el patr\'on MVC, esto significa que para cada
+      pieza de código existe un lugar predeterminado y todas las piezas de código
+      de la aplicacion interactuan de forma predeterminada. 
+      \begin{description}
+        \item[Modelo] Representa la informaci\'on o los datos y contiene 
+        las reglas o métodos para manipular estos datos. En el caso de Rails, los
+        modelos son usados principalmente para manejar la interacci\'on con las 
+        tablas de la Base de Datos, en la que cada tabla corresponde a un modelo 
+        en la aplicaci\'on, para nombrar a estos modelos existe una simple convenci\'on 
+        que es la de nombrar  a la tabla en forma plural, mientras que el modelo 
+        tiene el nombre en singular.
+        El Modelo, en Rails es el principal encargado de manejar  la \emph{logica del negocio}.
+        \item[Vista]  Representa la interfaz de la aplicaci\'on. En Rails las vistas 
+        son archivos HTML con código Ruby embebido\footnote{ ERB (Embedded Ruby) } que realiza la tarea de representar 
+        los datos. Las Vistas son las que generan los datos que son enviados al
+        navegador web.%browser.
+        \item[Controlador] Es el encargado de interactuar entre el modelo y la vista,
+        procesando los datos enviados en el request del navegador web, 
+        llamando a métodos del modelo para conseguir  \emph{informaci\'on} de la base de datos,
+        posteriormente el controlador envia esta \emph{informaci\'on}  a la vista.
 
-      Concepto que se desarrolló en 1979 por Trygve Reenskaug el cual da una solución al problema de separar la lógica del negocio de la lógica de la presentación. Cada acción o concepto se desarrolla en un lugar determinado, los objetivos que se pueden apreciar al usar esta arquitectura es la facilidad para escribir código y de mantenerlo. \\
+        El Controlador y la Vista son los los encargados de manejar  la \emph{l\'ogica de la presentaci\'on}.
+      \end{description}
 
-      Se puede apreciar el comportamiento de este patrón, en la figura \ref{fig:mvc}, al visitar la ruta que muestra la información de un usuario ``\emph{localhost/users/1}'' desde el navegador, este genera una llamada GET y Rails lo direcciona a la acción show del \textbf{controlador} users, la acción show se encarga de llamar al \textbf{modelo} “User”, el controlador extrae el id del usuario de la llamada\footnote{request} \textbf{ GET /users/1 }, permitiendo al \textbf{modelo} que es el encargado de manejar la lógica del negocio, por ejemplo validando o modificando los datos que se guardan o se extraen de una base de datos, el controlador almacena la información devuelta por el modelo en la variable @user, que es pasada a la \textbf{vista} show.html.erb el cual se encarga de generar el template HTML y devuelve al navegador la página solicitada. \\
-
-      La capacidad de declarar una variable en el controlador y que esta variable esté disponible en la vista, así como toda la configuración que envuelve el comportamiento del patrón MVC ya esta implementada y no es necesario crear archivos de configuración, todo este trabajo es parte de la filosofía de Rails “convención sobre configuración”.\\
+      % there’s a
+      % place for each piece of code, and all the pieces of your application interact in a
+      % standard way.
 
       \begin{figure}[!hbp]
         \begin{center}
-          \includegraphics[width=1\textwidth]{mvc}
+          \includegraphics[width=1\textwidth]{mvc2}
         \end{center}
         \caption{Un diagrama detallado del patr\'on MVC en Rails}
         \label{fig:mvc}
       \end{figure}
+
+      % \begin{figure}[!hdp]
+      % \centering
+      % \def\svgwidth{\columnwidth}
+      % \input{mvc.pdf_tex}
+      % \end{figure}
+
+
+      Se puede apreciar el comportamiento de este patrón, en la figura \ref{fig:mvc}
+
+      \begin{enumerate}
+        \item se  generar un request ``\textbf{GET /users/1}'' desde el navegador web.
+        \item este request primeramente es analizado por el \textbf{router}, que siguiendo el principio
+        REST  lo direcciona a la acción \emph{show} del \textbf{controlador} \emph{users}.
+        \item el controlador extrae el id del usuario de la llamada\footnote{ request} \textbf{GET /users/1}.
+        \item la acción \emph{show} del controlador se encarga hacer la llamada al \textbf{modelo} ``User'',
+        mediante el metodo \verb|find_by_id(1)|.
+        \item el modelo ``User'', inicialmente valida o modifica los datos recibidos.
+        \item el modelo ``User'', mediante el modulo ActiveRecord\footnote{ Es una implementaci\'on del patron
+        Object-Relational Mapping(ORM), que mapea las tablas de la Base de datos relacional en clases, filas en objetos y 
+        columnas en atributos de los objetos  } 
+        extrae  la informaci\'on de la Base de datos.
+        \item esta informaci\'on es almacenada en una
+         \emph{instance variable}\footnote{los \emph{instance variable} son 
+         variables especiales que empiezan con una ``@'' y están disponibles en la vista } \verb|@user|
+        \item la vista ``show.html.erb''\footnote{ la extenci\'on \textbf{erb} 
+        indica que la pagina HTML puede  tener contener código Ruby} incluye la variable \verb|@user| mediante los
+        \emph{ERB output tag}(\verb|<%=  %>|)
+        \item este template es procesado en el servidor, y renderizado como una 
+        pagina HTML que es presentada en el navegador web.% mostrando la informacion
+      \end{enumerate}
+
+
+      % visitar la ruta que muestra la información de un usuario
+
+      La capacidad de declarar una variable en el controlador y 
+      que esta variable esté disponible en la vista, así como toda 
+      la configuración que envuelve el comportamiento del patrón MVC 
+      ya esta implementada y no es necesario escribir archivos de configuración, 
+      El patr\'on MVC es la base de la aproximaci\'on RESTful de Rails, asi como  de las filosofías 
+      \emph{DRY} y \emph{Convenci\'on sobre Configuraci\'on}, 
+      %  y es el que hace 
+      % posible 
+      %  es parte   parte de la filosofía de Rails “convención sobre configuración”,
+           en concluci\'on se pudo apreciar que       al usar esta arquitectura el código 
+      se vuelve mas  ordenado, con el consiguiente resultado de ser un código 
+      mucho mas limpio, legible y entendible. \\ %entendible\\
+
+
     % subsection mvc (end)
 
     \subsection{Mashup} % (fold)
     \label{sub:mashup}
-      Mashup es una técnica en el desarrollo de aplicaciones web que consiste en combinar datos de diferentes proveedores. Un mashup usa uno o más servicios y mezcla algunas características de estos servicios, los servicios generalmente son datos que son distribuidos mediante las APIs\footnote{Application Programming Interface, es el conjunto de funciones y procedimientos que se ofrece para ser utilizado por otro software}. Con la finalidad de ofrecer estos datos de forma más fácil de entender y usar para el cliente.\\
+      Mashup es una técnica en el desarrollo de aplicaciones web que consiste en 
+      combinar datos de diferentes proveedores. Un mashup usa, uno o más servicios 
+      y mezcla algunas características de estos servicios, los servicios generalmente 
+      son datos que son distribuidos mediante las APIs\footnote{Application 
+      Programming Interface, es el conjunto de funciones y procedimientos que se 
+      ofrece para ser utilizado por otro software}. 
 
-      Los primeros mashups empezaron como experimentos con los web services que ofrecian las grandes empresas, por ejemplo uno de los primeros mashups importante fue el de housingmaps.com  que convina los datos de Craigslist ( listas de casas, departamentos, etc, para rentar, vender ) y Google Maps ( mapas a nivel global), en una aplicaci\'on que ofrece servicios y los se\~nala en un mapa. Desde entonces surgieron diferentes tipos y aproximaciones dependiendo del tipo de datos y el servicio que se quiere ofrecer.\cite{web8}\\
+      Con la finalidad de ofrecer 
+      estos datos de forma más fácil de entender y usar para el cliente.\\
 
-      Se pueden apreciar diferentes implementaciones de mashups, los mashups orientados al consumo y los mashups orientados a las empresas, básicamente estos mashups de consumo se refieren a aplicaciones en las cuales los datos obtenidos de diferentes fuentes son mezclados y presentados al cliente, y los mashups empresariales o de negocios aparte de las fuentes de datos externas, mezclan sus propios datos en el mashup ofreciendo una mejor experiencia del usuario.\\
+      Los primeros mashups empezaron como experimentos con los web services que 
+      ofrec\'ian las grandes empresas, por ejemplo uno de los primeros mashups mas
+      importantes fue el de housingmaps\footnote{http://www.housingmaps.com/}  
+      que combina los datos de Craigslist ( listas de casas, departamentos, etc, para rentar, vender ) 
+      y Google Maps ( mapas a nivel global), en una aplicaci\'on que ofrece servicios y los 
+      posiciona en un mapa. Desde entonces surgieron diferentes tipos y aproximaciones 
+      dependiendo del tipo de datos y el servicio que se quiere ofrecer.\cite{web8}\\
 
-      Uno de los componentes básicos de la Web 2.0 son los \textbf{datos}, sobre los cuales se puede obtener un producto con valor agregado, los datos están disponibles para que sean usados, pero obtener y almacenar estos ``datos''  y dependiendo del tipo de datos, puede llegar a costar tiempo o dinero o ambos, es por eso que los datos son ofrecidos con o sin restricción dependiendo de las políticas de uso que tenga la empresa que ofrece los datos.\\
+      Se pueden apreciar diferentes implementaciones de mashups, los mashups 
+      orientados al consumo y los mashups orientados a las empresas, básicamente 
+      estos mashups de consumo se refieren a aplicaciones en las cuales los datos 
+      obtenidos de diferentes fuentes son mezclados y presentados al cliente, 
+      y los mashups empresariales o de negocios aparte de las fuentes de datos 
+      externas, mezclan sus propios datos en el mashup ofreciendo una mejor experiencia del usuario.\\
 
-      En la aplicación desarrollada se necesitaba el uso de mapas para que el despliegue de información sea de forma más interactiva y de fácil uso, los datos geográficos públicos generalmente están disponibles para ser usados pero para su uso se necesitaba que esté representado de forma gráfica en la pantalla de la computadora, este trabajo lo llevan a cabo empresas las cuales generalmente cobran por el uso de los mapas, se puede  apreciar que se están obteniendo datos en forma de mapas a través del API de Google Maps, Google permite usar sus datos con restricciones dependiendo de la cantidad de llamadas que se haga a su API por la aplicación que la usa.\\
+      Uno de los componentes básicos de la Web 2.0 son los \textbf{datos},\cite{web5} 
+      sobre los cuales se puede obtener un producto con valor agregado, 
+      generalmente los datos están disponibles para que sean usados, pero
+      dependiendo del tipo de ``datos'', obtenerlos y almacenarlos puede llegar a costar 
+      tiempo o dinero o ambos, es por eso que los datos son ofrecidos con o sin 
+      restricción dependiendo de las políticas de uso que tenga la empresa que ofrece los datos.\\
 
-      El gran beneficio de usar los datos de Google Maps en un mashup es que nos permite desplegar información que de otra forma costaría mucho tiempo y dinero para implementar.\\
+      El mashup implementado se podria catalogar como un mashup de negocio, ya que
+      se esta integrando datos externos(Google Maps API) y datos internos(locaciones dentro del campus de la UMSS),
+      inicialmente se almacenaron varias locaciones pero eventualmente estos datos
+      se incrementaran mediante el uso que se le de por parte de los usuarios.\\
 
-      Para usar el API de Google Maps solo es necesario importar la librería declarandola en la cabecera del documento HTML, para visualizar el mapa es necesario declarar un elemento único (se recomienda un div con id de preferencia ``map'' o similares) dentro del DOM de la página y se maneja mediante el lenguaje de programación del lado del cliente: javascript.\\
+      % La figura \ref{fig:api_gm}, es necesario importar la
+      % librería declarandola en la cabecera del documento HTML 
+
+      %  para usar el y la figura \ref{fig:div_map} 
+         
+      Para usar el API de Google Maps es necesario importar la librería 
+      declarandola en la cabecera del documento HTML, como se ve muestra en la 
+      figura \ref{fig:api_gm}, para visualizar el mapa es 
+      necesario declarar un elemento único (se recomienda un div con id de 
+      preferencia ``map'' o similar) dentro del DOM de la página, figura 
+      \ref{fig:div_map}, de esta forma se      logra visualizar el mapa 
+      geográfico que ofrece Google, y su manejo es  mediante el lenguaje de 
+      programación del lado      del cliente, \emph{javascript}, figura \ref{fig:umss_js}.\\
+
+      Para el uso de los datos internos se hizo uso intensivo de la interfaz 
+      REST de Rails, ya que se necesitaba desplegar en el mapa los lugares o locaciones
+      de la UMSS, esto se debe a que la interfaz mashup se encuentra en el 
+      lado del cliente(navegador Web) y la informaci\'on recopilada esta 
+      almacenada en el servidor(Rails), entonces necesitaba extraer los datos del servidor y presentarlos al cliente, este procedimiento se lo puede demostrar con el uso del comando \verb|curl|, y con la informaci\'on obtenida se puede desplegar la locaci\'on en el mapa.\\
+
+      \begin{center}
+        \begin{verbatim}
+          $ curl http://localhost:3000/places/23.json
+
+          {
+            "id": 23,
+            "type": "caseta",
+            "address": "",
+            "lng": -66.1473755998898,
+            "lat": -17.3938599682795,
+            "name": "informaciones",
+            "photos": [
+              {
+                "id": 28,
+                "desc": "informaciones",
+                "url": "photo/image/28/square_shin.jpg"
+              }
+            ]
+          }
+        \end{verbatim}
+      \end{center}
+
+      Como se ve en el ejemplo, el servidor responde mandando los datos en formato \textbf{json}\footnote{Notación de Objetos de JavaScript, es un formato ligero de intercambio de datos y  está basado en un subconjunto del Lenguaje de Programación JavaScript \cite{json}}, que al ser un metodo comun para enviar datos desde el servidor al cliente, es facil de implementar y de manipular, y se genera atraves de una plantilla 
+      en la que se puede manipular los datos y presentarlos de la mejor forma posible. Por ejemplo para mostrar los lugares se escribio la siguiente plantilla.
+
+      \begin{center}
+        \begin{verbatim}
+          # views/places/show.json.rabl
+
+          object  @place
+          attributes :id, :name, :desc, :address
+
+          node(:type) { |place| place.type_place.name }
+          node(:lng)  { |place| place.coord_geographic.x }
+          node(:lat)  { |place| place.coord_geographic.y }
+
+          child :photos do 
+            attributes :id, :desc
+            node(:url) { |photo| photo.image.url(:square) }
+          end
+        \end{verbatim}
+      \end{center}
+
+
+      De esta forma se pueden ofrecer los datos internos para que otras aplicaciones la puedan usar. Es lo que se denominaria \emph{REST Web Services}\\
+
+
+      En la aplicación desarrollada se necesitaba el uso de mapas para que el 
+      despliegue de información sea de forma más interactiva y de fácil uso, 
+      los datos geográficos públicos generalmente están disponibles para ser 
+      usados pero para su uso se necesitaba que esté representado de forma gráfica 
+      en la pantalla de la computadora, este trabajo lo llevan a cabo empresas 
+      las cuales generalmente cobran por el uso de los mapas, se puede  apreciar 
+      que se están obteniendo datos en forma de mapas a través del API de Google Maps, 
+      Google permite usar sus datos con restricciones dependiendo de la cantidad 
+      de llamadas que se haga a su API por la aplicación que la usa.\\
+
+      El gran beneficio de usar los datos de Google Maps en un mashup es que nos 
+      permite desplegar información que de otra forma costaría mucho tiempo y dinero para implementar.\\
+
 
       \begin{figure}[!hbp]
         \begin{center}
@@ -200,43 +431,69 @@
         \caption[API de Google Maps declarado]{Se importa el API de Google Maps declarando en  <head>  ~del documento}
         \label{fig:api_gm}
 
-      %   \hspace{4em}
-
-      %   \begin{center}
-      %     \includegraphics[width=1\textwidth]{div_map}
-      %   \end{center}
-      %   \caption[Div con id map para el Mapa]{El mapa se visualiza dentro de la etiqueta div con id map}
-      %   \label{fig:div_map}
-
-      %   \hspace{4em}
-
-      %   \begin{center}
-      %     \includegraphics[width=1\textwidth]{umss_init}
-      %   \end{center}
-      %   \caption[UMSS javascript]{Se captura el div map del documento y se inicializa el mapa mediante el lenguaje javascript}
-      %   \label{fig:umss_js}
-      \end{figure}
-      
         % \vspace{4em}
-      \begin{figure}[!hbp]
+
         \begin{center}
           \includegraphics[width=1\textwidth]{div_map}
         \end{center}
         \caption[Div con id map para el Mapa]{El mapa se visualiza dentro de la etiqueta div con id map}
         \label{fig:div_map}
-      \end{figure}
 
+        % \vspace{4em}
 
-      \begin{figure}[!hbp]
         \begin{center}
           \includegraphics[width=1\textwidth]{umss_init}
         \end{center}
         \caption[UMSS javascript]{Se captura el div map del documento y se inicializa el mapa mediante el lenguaje javascript}
         \label{fig:umss_js}
       \end{figure}
+      
+        % \vspace{4em}
+      % \begin{figure}[!hbp]
+      %   \begin{center}
+      %     \includegraphics[width=1\textwidth]{div_map}
+      %   \end{center}
+      %   \caption[Div con id map para el Mapa]{El mapa se visualiza dentro de la etiqueta div con id map}
+      %   \label{fig:div_map}
+      % \end{figure}
+
+
+      % \begin{figure}[!hbp]
+      %   \begin{center}
+      %     \includegraphics[width=1\textwidth]{umss_init}
+      %   \end{center}
+      %   \caption[UMSS javascript]{Se captura el div map del documento y se inicializa el mapa mediante el lenguaje javascript}
+      %   \label{fig:umss_js}
+      % \end{figure}
 
     % subsection mashup (end)
   % section patrones_web20 (end)
+
+  \section{Concluci\'on} % (fold)
+  \label{sec:conclucion}
+    Los patrones no son entidades separadas, como ya se vio todos los patrones web2.0 
+    se integran y trabajan de manera conjunta, no se podría implementar software que solo 
+    implemente algun patr\'on.
+    
+    Los patrones empiezan como soluciones a algun problema de dise\~no y descritas en concepto, 
+    gracias a que los problemas y experiencias que tuvieron los programas que lograron pasar de la
+    Web Estatica  y los que nacieron en la Web2.0 están documentados y analizados,
+    después depende de los desarrolladores el implementarlas de la mejor forma posible.\\
+
+    Rails se dise\~no, para que trabaje sobre las ultimas tecnolog\'ias disponibles, para poder desarrollar 
+    software que se pueda catalogar como ``\emph{Aplicacion Web2.0}'', pero al final que una aplicaci\'on
+    obtenga esta etiqueta esta dada por m\'ultiples factores, tales que pueden ser,
+    la capacidad de entender la web como un algo que evoluciona con el tiempo, e
+    implementar software que pueda utilizar todos los avances tecnol\'ogicos en favor
+    de mejorar la experiencia del usuario, siempre apoyados por la interacci\'on
+    que supone el intercambio y flujo de ideas de la comunidad de usuarios que usan
+    la aplicaci\'on.\\  
+    % ser mejorado, actualizado, analizado por sus usuarios.  
+    
+ 
+    % por eso tiene gran importancia estudiar los  patrones, para obtener una idea clara de 
+
+  % section conclucion (end)
 % chapter ruby_on_rails_y_patrones_web_2_0 (end)
 
 

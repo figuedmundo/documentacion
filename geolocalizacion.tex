@@ -7,7 +7,7 @@
 
   % Para entender esta definición se necesita explicar algunos terminos     
 
-  La Georreferenciación era usada bastante en el ambito científico, y se necesitaba de instrumental y personal bastante cualificado para su manejo, pero en la actualidad la cantidad de dispositivos con capacidad para geolocalizar un objeto sobre la tierra es bastante comun, de hecho todos los smartphones actuales (celulares con Android, Iphones) traen integrados receptores GPS (Global Posicion System),  y sumados a la exploci\'on de aplicaciones  que integran mapas con localizaci\'on (mashups), ya que se puede tener una base de datos con informaci\'on muy importante pero al final  los datos son cifras, descripciones, etc. y para tomar decisiones se hace muy difícil el interpretar estos datos, aca viene en nuestra ayuda los SIG (Sistemas de Informacion Geografica).\\
+  La Georreferenciación era usada bastante en el ambito científico, y se necesitaba de instrumental y personal bastante cualificado para su manejo, pero en la actualidad la cantidad de dispositivos con capacidad para geolocalizar un objeto sobre la tierra es bastante comun, de hecho todos los smartphones actuales (celulares con Android, Iphones) traen integrados receptores GPS (Global Posicion System),  y sumados a la exploci\'on de aplicaciones  que integran mapas con localizaci\'on (mashups), ya que se puede tener una base de datos con informaci\'on muy importante pero al final  los datos son cifras, descripciones, etc. y para tomar decisiones se hace muy difícil el interpretar estos datos, aca viene en nuestra ayuda los SIG (Sistemas de Informaci\'on Geografica).\\
 
   Actualmente existe una explosi\'on de aplicaciones, donde empresas, particulares y hasta donde organismos gubernamentales est\'an haciendo uso de estas tecnologías.
   Y las posibilidades son diversas, por ejemplo, se se quisiera planificar la construcci\'on de un colegio se podria integrar los datos del censo con un mapa, identificando los sectores con mayor porcentaje de ni\~nos y localizando los sectores mas propicios para realizar la construcción del inmueble. En el caso de una catástrofe natural, el tener las rutas de evacuaci\'on geolocalizadas y disponibles en un mapa de manera eficiente,  ayudaria en la evaciaci\'on de las personas del lugar.\\ 
@@ -105,10 +105,73 @@
           \label{fig:mercator_proyection}
         \end{figure}
 
-        Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorcion de esta proyecci\'on se hace evidente si se observa la zona de Groenlandia ya que pareceria tan grande como Africa o America del Sur, cosa que no es, ya que Groenlandia es casi 14 veces mas peque\~no que Africa. A pesar de esta distorci\'on tan marcada, la Proyección de Mercator es una de las mas usadas, de hecho Google Maps usa esta proyecci\'on.
-
+        Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorcion de esta proyecci\'on se hace evidente si se observa la zona de Groenlandia ya que pareceria tan grande como Africa o America del Sur, cosa que no es, ya que Groenlandia es casi 14 veces mas peque\~no que Africa. A pesar de esta distorci\'on tan marcada, la \textbf{Proyección de Mercator} es una de las mas usadas.
+         % de hecho Google Maps usa esta proyecci\'on.
       % subsection coordenadas_proyectadas (end)
+      \subsection{Que se uso en la Aplicaci\'on} % (fold)
+      \label{sec:que_se_uso_en_la_aplicacion}
+        Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene un costo.        
+        Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaria usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
+
+        % Por otro lado, 
+        También hay tomar en cuenta la base de datos, ya que será esta la que se encargara de manejar los datos espaciales. Al estar usando PostGIS, se puede ver que en su documentacion\footnote{ http://postgis.org/documentation/manual-1.5/ch04.html} que claramente exorta el uso de un sistema geometrico sobre el uso de un sistema geografico si  se va trabajar con datos que cubran una peque\~na area geografica. Tomando en cuenta esta recomendaci\'on y el tama\~no del área de estudio (campus UMSS), se procedió a implementar en la base de datos el uso de la proyecci\'on Mercator. Se va usar Mercator sobre las otras proyecciones porque aparte de las ventajas que se mencionaron con anterioridad, Google Maps usa esta proyecci\'on y ya que se usara este mapa lo más correcto es trabajar con la misma proyecci\'on.  
+       
+
+        % Como 
+        % PostGIS maneja dos tipos de datos, geograficos y geometricos
+
+      % section que_se_uso_en_la_aplicacion (end)
   % section sistema_de_coordenadas_para_datos_geograficos (end)
+
+  \section{Implementaci\'on} % (fold)
+  \label{sec:Implementacion}
+    Al implementar una aplicaci\'on con Rails, no se maneja la base de datos con ordenes SQL  puro. La base de datos se la maneja atraves de un ORM (ActiveRecord). 
+    Para llevar a cabo esta tarea es necesario escribir una \emph{migraci\'on}, el cual es un metodo que Rails interpreta y lo traduce a ordenes SQL.\\
+    \begin{center}
+      \begin{verbatim}
+        class CreatePlaces < ActiveRecord::Migration
+          def change
+            create_table :places do |t|
+              t.string :name
+              t.point :coord, :srid => 3785 
+            end
+          end
+        end
+      \end{verbatim}
+    \end{center}
+    Esta \emph{migraci\'on} cre\'o la tabla \textbf{places} con los atributos \textbf{name} y \emph{coord}, el atributo \textbf{name} es del tipo string que en PostgreSQL se traducir\'ia en una columna de tipo \emph{VARCHAR(255)}, y el atributo \textbf{coord} de tipo point con un srid\footnote{ Spatial Reference System Identifier, El SRID corresponde a un sistema de referencia espacial basado en el elipsoide concreto usado para la creación de mapas de tierra plana o de tierra redonda.\cite{msdn_srid} } 3785,     el SRID  es la llave primaria de la tabla \emph{spatial\_ref\_sys} que se crea cuando se inicializa una base de datos espacial, esta tabla provee la informaci\'on necesaria para interpretar y convertir correctamente todas las coordenadas existentes, adem\'as permite definir alg\'un tipo de sistema de coordenadas si no existe en esta tabla, el SRID 3785 esta definida en la tabla \emph{spatial\_ref\_sys}  como ``Popular Visualisation CRS / Mercator'', Rails interpreta el tipo point y crea una columna de tipo \emph{geometry}, definida por PostGIS.\\
+
+    El anterior código escrito en Rails se traduciria en SQL de la siguiente forma: 
+    \begin{center}
+      \begin{verbatim}
+        CREATE TABLE places (
+          id    INTEGER       PRIMARY KEY,
+          name  VARCHAR(255)
+        );
+        SELECT AddGeometryColumn(
+                  'places', -- 'nombre_tabla'
+                  'coord',  -- 'nombre_columna'
+                  3785,     -- srid
+                  'POINT',  -- 'tipo'
+                  3         -- dimension
+               );
+      \end{verbatim}
+    \end{center}
+    Al usar un framework como Rails, se tiene como ventaja que existen herramientas creadas, comprobadas y avaladas por una gran catidad de usuarios, en este caso se preciso de herramientas que ayuden en el  manejo de informaci\'on geogr\'afica, la gema \textbf{RGeo} es la que maneja  la correcta manipulaci\'on de estos datos. 
+
+
+  % section Implementacion (end)
+
+  \section{Concluci\'on} % (fold)
+  \label{sec:geo_conclucion}
+    Los Mapa son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado al trabajo.\\
+
+    Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los sistemas de coordenadas en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de operaciones sobre estos  datos.
+
+
+
+    % Maps are deceivingly simple tools, and cartography a surprisingly complex discipline. While the most trouble many of us will have with a map is figuring out how to fold it, this simplicity belies great sophistication that has been developed over the years. 
+  % section geo_conclucion (end)
 
 
   % \begin{description}

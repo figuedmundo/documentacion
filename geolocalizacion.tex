@@ -21,7 +21,7 @@
     \begin{description}
       \item[Coordenada] Es una secuencia de n-numer\'os que designa la posici\'on de un punto en un espacio n-dimensional. \\
       \item[Sistema de coordenadas] Un sistema de coordenadas es  un conjunto de reglas matemáticas que especifican como las coordenadas son asignadas  a cada  punto.
-      \item[Punto] Es  la representaci\'on de una posici\'on, topol\'ogicamente 0-dimensional (no tiene volumen, area, longitud o cualquier otra unidad multi-dimensional).
+      \item[Punto] Es  la representaci\'on de una posici\'on, topol\'ogicamente 0-dimensional (no tiene volumen, area, longitud o cualquier otra unidad multi-\\dimensional).
     \end{description}
 
     % \subsection{Coordenada} % (fold)
@@ -108,7 +108,7 @@
         Tal como se puede apreciar en la figura \ref{fig:mercator_proyection}, la distorcion de esta proyecci\'on se hace evidente si se observa la zona de Groenlandia ya que pareceria tan grande como Africa o America del Sur, cosa que no es, ya que Groenlandia es casi 14 veces mas peque\~no que Africa. A pesar de esta distorci\'on tan marcada, la \textbf{Proyección de Mercator} es una de las mas usadas.
          % de hecho Google Maps usa esta proyecci\'on.
       % subsection coordenadas_proyectadas (end)
-      \subsection{Que se uso en la Aplicaci\'on} % (fold)
+      \subsection{Que se us\'o en la Aplicaci\'on} % (fold)
       \label{sec:que_se_uso_en_la_aplicacion}
         Es importante entender las diferencias entre los distintos tipos de sistemas de coordenadas porque computacionalmente realizar operaciones sobre los sistemas de coordenadas tiene un costo.        
         Si se usara el sistema de coordenadas geográfico (WSG84) este es el más apropiado si se necesitaria usar grandes extensiones de la superficie terrestre, que al ser una estructura elipsoidal el costo computacional para realizar las operaciones matemáticas de calcular distancias, intersecciones, etc. es más elevado. En cambio el uso de un sistema de coordenadas proyectado (Mercator Projection) tiene un costo computacional más bajo, ya que se estaría trabajando con un sistema geométrico.\\
@@ -149,25 +149,81 @@
           name  VARCHAR(255)
         );
         SELECT AddGeometryColumn(
-                  'places', -- 'nombre_tabla'
-                  'coord',  -- 'nombre_columna'
+                  'places', -- nombre_tabla
+                  'coord',  -- nombre_columna
                   3785,     -- srid
-                  'POINT',  -- 'tipo'
-                  3         -- dimension
+                  'POINT',  -- tipo
+                  3         -- dimensi\'on
                );
       \end{verbatim}
     \end{center}
-    Al usar un framework como Rails, se tiene como ventaja que existen herramientas creadas, comprobadas y avaladas por una gran catidad de usuarios, en este caso se preciso de herramientas que ayuden en el  manejo de informaci\'on geogr\'afica, la gema \textbf{RGeo} es la que maneja  la correcta manipulaci\'on de estos datos. 
+    Al usar un framework como Rails, se tiene como ventaja que existen herramientas creadas, comprobadas y avaladas por una gran catidad de usuarios, en este caso se preciso de herramientas que ayuden en el  manejo de informaci\'on geogr\'afica, la gema \textbf{RGeo} \footnote{ RGeo es una libreria de datos geospaciales  para el lenguaje Ruby.} es la que maneja  la correcta manipulaci\'on de estos datos.\\
+
+    Una ves configurada/implementada la base de datos se puede obtener la locacion de cualquier lugar mediante el ORM.
+
+\begin{center}
+  \begin{verbatim}
+    $ rails console
+    Loading development environment (Rails 3.2.3)
+    > UMSS = Place.find_by_name("UMSS")
+    => #<Place id: 21, name: "UMSS", 
+        coord: #<RGeo::Geos::PointImpl:0x52e4e60 
+        "POINT (-7363625.14672284 -1966786.8137609)">, ... >
+    > UMSS.coord_geographic.to_s
+    => "POINT (-66.14857015827988 -17.394421906929086)"
+  \end{verbatim}
+\end{center}
+
+    Tal como se puede apreciar, la consola de Rails permite manipular los datos cargados en la aplicación desde la línea de comandos de Linux, en la demostración se ve que la variable \textbf{UMSS}  es el resultado de la búsqueda en la base de datos mediante el modelo Place con la opción de buscar por el nombre, el atributo \textbf{coord} de la variable \textbf{UMSS} es un objeto de tipo RGeo y  el punto está proyectado, y si fuera necesario también se puede obtener el mismo punto en coordenadas geográficas.\\
+    % , como en el caso de que la aplicacion consume datos por 
+
+    Obtener la coordenada es el primer paso, seguidamente se debe mostrarlo sobre un mapa, en este caso \emph{Google Maps}. El API de Google Maps permite este paso declarando un objeto \emph{Marker}, que es la imagen que muestra Google Maps, este objeto para mostrarse en el mapa requiere que se le declare un objeto tipo \emph{LatLong}, el cual es la coordenada y se por \'ultimo se necesita declarar el mapa en el cual se va mostrar el marcador. Este objeto es altamente personalizable pero b\'asicamente este es el procedimiento para representar la coordenada en un mapa de Google Maps. Tal como se puede apreciar en la figura \ref{fig:gmaps_geo}\\
+    % \begin{center}
+    %   \begin{verbatim}
+    %     var maker = new google.maps.Marker({
+    %       position: new google.maps.LatLng( lat, lng  )
+    %       map: UMSS.map
+    %     });
+    %   \end{verbatim}
+    % \end{center}
+
+    \begin{figure}[!htp]
+    \label{fig:gmaps_geo}
+  \begin{verbatim}
+    var maker = new google.maps.Marker({
+      position: new google.maps.LatLng(UMSS.lat, UMSS.lng)
+      map: UMSS.map
+      icon: new google.maps.MarkerImage('img/gota.png');
+    });
+  \end{verbatim}
+
+          \begin{center}
+            \includegraphics[width=0.9\textwidth]{gmaps_geo}
+          \end{center}
+          \caption[Google Maps - Marker]{Google Maps representa un \emph{punto} con un \emph{marcador}, el cual es altamente personalizable } 
+    \end{figure}
+
+
+
+    % Pero esta coordenada  no seria  facil de entender sin una adecuada representacion sobre un mapa,  
 
 
   % section Implementacion (end)
+  % \section{Los datos} % (fold)
+  % \label{sec:los_datos}
+
+
+  %   Una vez implementada la Base de datos es necesario insertar ``los datos''
+  % % section los_datos (end)
+
 
   \section{Concluci\'on} % (fold)
   \label{sec:geo_conclucion}
-    Los Mapa son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado al trabajo.\\
+    Los Mapas son herramientas muy útiles a la hora de desplegar información pero realizar el mapa, crear las fórmulas matemáticas con las cuales se trabajará, determinar cómo se usarán estas fórmulas para una representación adecuada de la superficie terrestre, es una tarea muy compleja. Como programador la tarea más complicada fue determinar el tipo de mapa y el sistema de coordenadas más adecuado al trabajo.\\
 
-    Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los sistemas de coordenadas en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de operaciones sobre estos  datos.
+    Los términos de longitud y latitud son en un inicio, más fácilmente comprendidos que un sistema proyectado, pero no se puede tomar a la ligera una correcta comprensión del uso de los \emph{sistemas de coordenadas} en una base de datos espacial, un mal uso de estos conceptos puede generar errores a la hora de manejar datos  espaciales o en el resultado de operaciones sobre estos  datos, llegando a resultados no deseados y que pueden costar mas tiempo y dinero en una posterior correci\'on.\\
 
+    La geolocalizaci\'on es actualmente una tecnolog\'ia y una herramienta usada en gran medida por una gran cantidad de aplicaciones web, a\~nadiendo b\'usquedas y resultados personalizados a nivel pa\'is, ciudad, barrio y calle, resultando en una gran variedad de servicios y que actualmente es de gran ayuda en diferentes escenarios. La geolocalizaci\'on nos ayuda a movernos por una ciudad, encontrar restaurantes, cines, transporte, etc. actualmente es una de las herramientas m\'as usadas y desarrolladas a nivel de industria, comercio, turismo, etc. y vale la pena estudiarla y entenderla.\\
 
 
     % Maps are deceivingly simple tools, and cartography a surprisingly complex discipline. While the most trouble many of us will have with a map is figuring out how to fold it, this simplicity belies great sophistication that has been developed over the years. 

@@ -55,6 +55,30 @@
       \label{fig:new_place}
     \end{figure}
     % pero para fines practicos se registraron inicialmente unos 5x lugares mediante un shapefile 
+    \subsection{La geolocalizacion de los lugares} % (fold)
+    \label{subsec:la_geolocalizacion_de_los_lugares}
+      % Como creo dentro de rails un lugar.
+      Para que Rails cree un lugar es necesario los siguentes pasos: 
+        \begin{itemize}
+          \item Declarar un objeto que maneja la proyeci\'on \\
+          \verb+ FACTORY = RGeo::Geographic.simple_mercator_factory +
+          \item Declarar el atributo encargado de manejar el dato espacial, mediante el metodo \emph{set\_rgeo\_factory\_for\_column} especificando la proyeci\'on. \verb|set_rgeo_factory_for_column(:coord, FACTORY.projection_factory)|
+          \item LLamar a al funcion \emph{create\_coord} cuando se crea un nuevo lugar, siempre teniendo en cuenta la proyecion en la cual se reciben los datos (\emph{lon} y \emph{lat} se reciben del lado del cliente en WS84) y proyectarlo para guardarlo correctamente en la base de datos (\emph{coord} esta en la proyecion EPSG 3785).
+          % \begin{center}
+          \begin{verbatim}
+    def create_coord
+      if self.new_record?
+        self.coord = FACTORY.point(lon, lat).projection 
+      else
+        p self.coord
+      end
+    end
+          \end{verbatim}
+          % \end{center}
+        \end{itemize}
+        
+    
+    % section la_geolocalizacion_de_los_lugares (end)
   
   % section los_lugares (end)
   \section{Modelo de base de datos} % (fold)
@@ -78,15 +102,15 @@
 
     \begin{center}
       \begin{verbatim}
-    -- Executing query:
-    SELECT  * from  shortest_path('select gid as id, 
-                                  source::integer,
-                                  target::integer, 
-                                  dist::double precision as cost from ways',
-                                  20, 299 , 
-                                  false, false)
-    Total query runtime: 11 ms.
-    31 rows retrieved.
+-- Executing query:
+SELECT  * from  shortest_path('select gid as id, 
+                              source::integer,
+                              target::integer, 
+                              dist::double precision as cost from ways',
+                              20, 299 , 
+                              false, false)
+Total query runtime: 11 ms.
+31 rows retrieved.
       \end{verbatim}
     \end{center}
 
@@ -94,6 +118,16 @@
 
   
   % section camino_minimo (end)
+
+  \section{Modelos ?} % (fold)
+  \label{sec:modelos_}
+  
+  % section modelos_ (end)
+  \section{Diagrama de casos de uso ?} % (fold)
+  \label{sec:diagrama_de_casos_de_uso_}
+  
+  % section diagrama_de_casos_de_uso_ (end)
+
 
 
 

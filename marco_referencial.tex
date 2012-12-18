@@ -1,4 +1,4 @@
-\chapter{Marco Referncial} % (fold)
+\chapter{Marco Referencial} % (fold)
 \label{cha:marco_referncial}
 
   % \section{Introducci\'on} % (fold)
@@ -8,38 +8,38 @@
 
   \section{Ruby on Rails} % (fold)
   \label{sec:ruby_on_rails}
-    Ruby on Rails es un framework dise\~nado para desarrollar apliaciones web, 
-    y esta contruido sobre el lenguaje de programacion Ruby, Ruby  fue creado
-    alrededor de 1993 por Yukihiro ``Matz'' Matsumuto de Japon, y liberado al 
-    publico en 1995, y desde entonces fue ganando en popularidad y 
+    Ruby on Rails es un framework dise\~nado para desarrollar aplicaciones web, 
+    y está construido sobre el lenguaje de programación Ruby, Ruby  fue creado
+    alrededor de 1993 por Yukihiro ``Matz'' Matsumuto de Jap\'on, y liberado al 
+    público en 1995, y desde entonces fue ganando  popularidad y 
     reputaci\'on gracias al aporte de una gran variedad de programadores, que 
-    realzan la sintaxis elegante y el codigo limpio que se genera, Ruby es un 
-    lenguaje de programacion multiparadigma ya que implementa programaci\'on 
-    Orientado a Objetos, programaci\'on Funcional asi como tambien 
+    realzan la sintaxis elegante y el código limpio que se genera, Ruby es un 
+    lenguaje de programación multiparadigma ya que implementa programaci\'on 
+    Orientado a Objetos, programaci\'on Funcional así como también 
     programaci\'on Imperativa. \\
 
-    Ruby on Rails fue creado en el 2004 por David Heinemeier Hansson durante el desarrollo de Basecamp, una aplicación de gesti\'on de proyectos, y una ves que se necesito para otros proyectos, el equipo de desarrollo extrajo el core de funcionalidad el cual fue presentado al publico en julio del 2004 con el nombre de Ruby on Rails, como proyecto Open Source bajo una licencia MIT, desde entonces tuvo un gran  crecimiento impulsado por la comunidad de usuarios que continuamente estan desarrollando nuevas caracteristicas, limpiando bugs y creando gemas\footnote{ Los plugins o complementos, en el lenguaje Ruby son llamados \textbf{gemas}}. La ultima version de Rails es la 3.2 publicado en enero del 2012 y actualmente esta en su revisi\'on 3.2.8 presentado en agosto del 2012,  demostrando que el equipo de desarrollo de Rails esta trabajando constantemente en mejorar este framework que actualmente esta entre los mejores en desarrollo web.\\
-     % y se prevee que la version 4 de Rails sea lanzada a finales del 2012, pero no  \\
-    % y para el proyecto se utilizo la version 3.2.3
+    Ruby on Rails fue creado en el 2004 por David Heinemeier Hansson durante el desarrollo de Basecamp, una aplicación de gesti\'on de proyectos, y una vez que se necesitó para otros proyectos, el equipo de desarrollo extrajo el core de funcionalidad el cual fue presentado al público en julio del 2004 con el nombre de Ruby on Rails, como proyecto Open Source bajo una licencia MIT, desde entonces tuvo un gran  crecimiento impulsado por la comunidad de usuarios que continuamente están desarrollando nuevas características, limpiando bugs y creando gemas\footnote{ Los plugins o complementos, en el lenguaje Ruby son llamados \textbf{gemas}}. La última versión de Rails es la 3.2 publicado en enero del 2012 y actualmente está en su revisi\'on 3.2.8 presentado en agosto del 2012,  demostrando que el equipo de desarrollo de Rails esta trabajando constantemente en mejorar este framework que actualmente está entre los mejores en desarrollo web.\\
+     % y se prevee que la versión 4 de Rails sea lanzada a finales del 2012, pero no  \\
+    % y para el proyecto se utilizó la versión 3.2.3
 
-    En nucleo de funcionalidad de Rails es un conjunto de funciones llamadas \emph{Railties}:
+    El núcleo de funcionalidad de Rails es un conjunto de funciones llamadas \emph{Railties}:
     \begin{description}
-      \item[Active Record] Es una implementaci\'on del patron
+      \item[Active Record] Es una implementaci\'on del patrón
         Object-Relational Mapping(ORM), que mapea las tablas de la Base de datos relacional en clases, filas en objetos y 
         columnas en atributos de los objetos.   
       \item[Active Support] Es el componente de Rails responsable de proporcionar extensiones del lenguaje Ruby, utilitarios y funciones primordiales a la hora de realizar cualquier tarea en el desarrollo de la aplicaci\'on.  
-      \item[Action Mailer] Permite enviar correo electronico (email) desde la aplicaci\'on usando un  modelo y vistas.
-      \item[Action Pack] Es el responsable de manejar y responder los request del navegado web. Provee las herramientas para el \textbf{routing}, define los \textbf{controladores}, y genera las respuestas renderizando las \textbf{vistas}. En resumen, Action Pack maneja las capas de la vista y el controlador del paradigma MVC.  
+      \item[Action Mailer] Permite enviar correo electrónico (email) desde la aplicaci\'on usando un  modelo y vistas.
+      \item[Action Pack] Es el responsable de manejar y responder los request del navegador web. Provee las herramientas para el \textbf{routing}, define los \textbf{controladores}, y genera las respuestas renderizando las \textbf{vistas}. En resumen, Action Pack maneja las capas de la vista y el controlador del paradigma MVC.  
     \end{description}
-    Otra de las caracteristicas de Rails es la facilidad para escribir Pruebas, en realidad Rails sugiere el modelo de Desarrollo guiado por Pruebas(TDD\footnote{Test-Driven Development, por sus siglas en Ingles}), que consiste en 3 pasos
+    Otra de las características de Rails es la facilidad para escribir Pruebas, en realidad Rails sugiere el modelo de Desarrollo guiado por Pruebas(TDD\footnote{Test-Driven Development, por sus siglas en Inglés}), que consiste en 3 pasos
     \begin{enumerate}
       \item \textbf{Rojo}, la prueba falla
       \item \textbf{Verde}, la prueba pasa
-      \item \textbf{Refactorizar}, limpiar el codigo 
+      \item \textbf{Refactorizar}, limpiar el código 
     \end{enumerate}
-    Para este proceso, Rails ofrece primeramente el modulo Test::Unit, pero tambien se pueden encontrar variadas herramientas para llevar a cabo esta tarea.\\
+    Para este proceso, Rails ofrece primeramente el módulo Test::Unit, pero también se pueden encontrar variadas herramientas para llevar a cabo está tarea.\\
 
-    Ruby on Rails es un framework MVC, que implementa los principios REST, No te Repitas\footnote{DRY, Don't Repit Yourself}, Convenci\'on sobre Configuraci\'on, estas caracteristicas de Rails estan explicadas con mayor detalle en el capitulo \ref{cha:ruby_on_rails_y_patrones_web_2_0}.
+    Ruby on Rails es un framework MVC, que implementa los principios REST, No te Repitas\footnote{DRY, Don't Repit Yourself}, Convenci\'on sobre Configuraci\'on, estas características de Rails están explicadas con mayor detalle en el capítulo \ref{cha:ruby_on_rails_y_patrones_web_2_0}.
 
 
   % section ruby_on_rails (end)
@@ -47,32 +47,32 @@
   \section{Base de Datos} % (fold)
   \label{sec:base_de_datos}
 
-    En una aplicacion web es necesario alguna forma de persistencia de datos, en especial si se estan usando datos complejos y en gran cantidad, para realizar esta tarea, la base de datos esfactor primoridal.
-    Rails maneja la base de datos mediante  un ORM, por lo tanto la base de datos que se utilize no es tan excluyente, en este caso se utilizo  \emph{PostgreSQL} como base de datos relacional.\\
+    En una aplicación web es necesario alguna forma de persistencia de datos, en especial si se están usando datos complejos y en gran cantidad, para realizar está tarea, la base de datos es un factor primordial.
+    Rails maneja la base de datos mediante  un ORM, por lo tanto la base de datos que se utilice no es tan excluyente, en este caso se utilizó  \emph{PostgreSQL} como base de datos relacional.\\
 
     \subsection{PostgreSQL} % (fold)
     \label{sec:postgres}
 
       PostgreSQL es un sistema de gestión de bases de datos objeto-relacional, Open Source y distribuido bajo licencia BSD. 
       PostgreSQL utiliza un modelo cliente/servidor y usa multiprocesos en vez de multihilos para garantizar la estabilidad del sistema. Un fallo en uno de los procesos no afectará el resto y el sistema continuará funcionando.
-      La última versi\'on de PostgreSQL es la 9.2, su desarrollo comenzo hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo, testeo de nuevas versiones.
-      PostgreSQL  esta considera como una de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y esta muy bien documentado\footnote{ http://www.postgresql.org/docs/9.2/static/}. 
-      Entre sus caracteristicas se pueden nombrar las siguientes.
+      La última versi\'on de PostgreSQL es la 9.2, su desarrollo comenz\'o hace más de 16 años, y cuenta con una gran comunidad que aporta con el desarrollo, testeo de nuevas versiones.
+      PostgreSQL  está considerada como una de los mejores \emph{Sistemas de gesti\'on de bases de datos}, es muy completo y está muy bien documentado\footnote{ http://www.postgresql.org/docs/9.2/static/}. 
+      Entre sus características se pueden nombrar las siguientes.
       \begin{itemize}
         \item Es una base de datos 100\% ACID\footnote{  ACID es un acrónimo de Atomicity, Consistency, Isolation and Durability}
         \item Integridad referencial
         \item Replicación asincrónica/sincrónica
-        \item Multiples métodos de autentificación
+        \item Múltiples métodos de autentificación
         \item Disponible para Linux y UNIX en todas sus variantes
         \item Funciones/procedimientos almacenados
         \item Soporte a la especificaci\'on SQL
       \end{itemize}
 
-      Personalmente se escogio trabajar con  PostgreSQL como DBMS
-      porque cuenta con una extensa documentacion,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, 
-      se hace posible que empresas como \textbf{Refractions Research} puedan crear recursos como PostGIS, necesario para trabajar con datos geograficos \'o espaciales.
+      Personalmente se escogió trabajar con  PostgreSQL como DBMS
+      porque cuenta con una extensa documentación,  y gracias a su caracter ``Open Source'', y su gran flexibilidad en poder definir nuevos tipos de datos, 
+      se hace posible que empresas como \textbf{Refractions Research} puedan crear recursos como PostGIS, necesario para trabajar con datos geográficos \'o espaciales.
 
-      % Entre sus principales  caracteristicas se puede nombrar que es
+      % Entre sus principales  características se puede nombrar que es
       % \footnote{ DBMS, DataBase Management System}
       % y durante este tiempo, estabilidad, potencia, robustez, facilidad de administración e implementación de estándares han sido las características que más se han tenido en cuenta durante su desarrollo. PostgreSQL funciona muy bien con grandes cantidades de datos y una alta concurrencia de usuarios accediendo a la vez a el sistema.
 
@@ -81,9 +81,9 @@
     \subsection{PostGis} % (fold)
     \label{sec:postgis}
 
-      PostGIS es un modulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiendola en una base de datos espacial para su utilizacion en un Sistema de Informaci\'on Geografica(SIG\footnote{ Es bastante comun utilizar el acronimo en Ingles, Geographic Information System (GIS), de hay viene el termino de PostGIS = Postgres + GIS}).
+      PostGIS es un módulo  que a\~nade soporte de objetos geográficos al DBMS PostgreSQL, convirtiéndola en una base de datos espacial para su utilización en un Sistema de Informaci\'on Geografica(SIG\footnote{ Es bastante común utilizar el acrónimo en Inglés, Geographic Information System (GIS), de hay viene el término de PostGIS = Postgres + GIS}).
 
-      El desarrollo de PostGIS esta a cargo de \textbf{Refractions Research}, esta liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre y lo protege de cualquier intento de apropiaci\'on.\\
+      El desarrollo de PostGIS está a cargo de \textbf{Refractions Research}, está liberada con la \emph{Licencia pública general de GNU}, declarandola como software libre y lo protege de cualquier intento de apropiaci\'on.\\
 
       PostGIS implementa la especificaci\'on ``SFSQL'' (Simple Features for SQL, define los tipos y funciones que necesita implementar cualquier base de datos espacial) de la OGC (Open Geospatial Consortium, es un consorcio internacional, formado por un conjunto de empresas, agencias gubernamentales y universidades, dedicado a desarrollar especificaciones de interfaces para promover y facilitar el uso global de la información espacial).\\
 
@@ -91,11 +91,11 @@
 
       PostGIS es gratis, pero no por ello es una herramienta de baja calidad, al contrario se la considera una herramienta de nivel empresarial, y muchas instituciones la est\'an usando de manera exitosa\footnote{ http://www.postgis.org/documentation/casestudies/}, aparte de numerosas aplicaciones \\
 
-      Manejar los datos geograficos con PostGIS es sencillo y muy eficiente, por esta raz\'on se utilizo esta herramienta, pero para conseguir la ruta optima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el modulo \textbf{PgRouting}, que tiene implementado este algoritmo.
+      Manejar los datos geográficos con PostGIS es sencillo y muy eficiente, por está raz\'on se utilizó está herramienta, pero para conseguir la ruta óptima entre 2 puntos se necesitaba el uso del algoritmo de Dijkstra y para PostGIS existe el módulo \textbf{PgRouting}, que tiene implementado este algoritmo.
       
       \subsubsection{pgRouting} % (fold)
       \label{sec:pgrouting}
-        pgRouting es una extensi\'on  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente esta siendo mantenido por Georepublic, la ultima versi\'on estable es la 1.05, y es la que fue usada para desarrollar el sistema.\\
+        pgRouting es una extensi\'on  de  PostGIS para proveer funcionalidades de ruteo espacial. pgRouting es un desarrollo posterior de pgDijkstra y actualmente está siendo mantenido por Georepublic, la última versi\'on estable es la 1.05, y es la que fue usada para desarrollar el sistema.\\
 
         Las ventajas del ruteo en la base de datos son:
         \begin{itemize}
